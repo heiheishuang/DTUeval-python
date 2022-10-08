@@ -24,5 +24,5 @@ DATASET_DIR="/data/zys_data/dtu_eval/SampleSet/MVS_Data"
 #python eval.py --data ${OUTPUT_DIR}/mvsnet114_l3.ply --scan 114 --mode pcd --dataset_dir ${DATASET_DIR} --vis_out_dir ${OUTPUT_DIR}/scan114
 #python eval.py --data ${OUTPUT_DIR}/mvsnet118_l3.ply --scan 118 --mode pcd --dataset_dir ${DATASET_DIR} --vis_out_dir ${OUTPUT_DIR}/scan118
 #
-python eval.py --data_output ${OUTPUT_DIR} --mode pcd --dataset_dir ${DATASET_DIR} --vis_out_dir ${OUTPUT_DIR
+python eval.py --data_output ${OUTPUT_DIR} --mode pcd --dataset_dir ${DATASET_DIR} --vis_out_dir ${OUTPUT_DIR}
 #

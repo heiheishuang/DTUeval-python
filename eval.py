@@ -110,7 +110,7 @@ if __name__ == '__main__':
 
         pbar.update(1)
         pbar.set_description('masking data pcd')
-        obs_mask_file = loadmat(f'{args.dataset_dir}/ObsMask/ObsMask{scan}_10.mat')
+        obs_mask_file = loadmat(f'{args.dataset_dir}/ObsMask/ObsMask{int(scan)}_10.mat')
         ObsMask, BB, Res = [obs_mask_file[attr] for attr in ['ObsMask', 'BB', 'Res']]
         BB = BB.astype(np.float32)
 
@@ -126,7 +126,7 @@ if __name__ == '__main__':
 
         pbar.update(1)
         pbar.set_description('read STL pcd')
-        stl_pcd = o3d.io.read_point_cloud(f'{args.dataset_dir}/Points/stl/stl{scan:03}_total.ply')
+        stl_pcd = o3d.io.read_point_cloud(f'{args.dataset_dir}/Points/stl/stl{int(scan):03}_total.ply')
         stl = np.asarray(stl_pcd.points)
 
         pbar.update(1)
@@ -138,7 +138,7 @@ if __name__ == '__main__':
 
         pbar.update(1)
         pbar.set_description('compute stl2data')
-        ground_plane = loadmat(f'{args.dataset_dir}/ObsMask/Plane{scan}.mat')['P']
+        ground_plane = loadmat(f'{args.dataset_dir}/ObsMask/Plane{int(scan)}.mat')['P']
 
         stl_hom = np.concatenate([stl, np.ones_like(stl[:,:1])], -1)
         above = (ground_plane.reshape((1,4)) * stl_hom).sum(-1) > 0
