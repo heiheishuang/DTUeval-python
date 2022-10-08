@@ -47,13 +47,15 @@ if __name__ == '__main__':
 
     thresh = args.downsample_density
 
-    ply_list = os.listdir(args.data_output)
+    tmp_list = os.listdir(args.data_output)
 
     f_result = open(args.data_output + "/result.txt", "w")
 
-    for file_name in ply_list:
-        if os.path.isdir(os.path.join(args.data_output, file_name)):
-            ply_list.remove(file_name)
+    ply_list = []
+    for file_name in tmp_list:
+        if file_name[-3:] == "ply":
+            ply_list.append(file_name)
+
 
     for file_name in ply_list:
 
@@ -176,4 +178,4 @@ if __name__ == '__main__':
         pbar.set_description('done')
         pbar.close()
         over_all = (mean_d2s + mean_s2d) / 2
-        f_result.write(f'{scan}, " acc: ", {mean_d2s}, ", comp: ", {mean_s2d}, "over: ", {over_all}')
+        f_result.write(f'{scan}, {mean_d2s}, {mean_s2d}, {over_all}')
