@@ -179,3 +179,4 @@ if __name__ == '__main__':
         pbar.close()
         over_all = (mean_d2s + mean_s2d) / 2
         f_result.write(f'{scan}, {mean_d2s}, {mean_s2d}, {over_all}')
+        print(scan, " acc: ", mean_d2s, ", comp: ", mean_s2d, "over: ", over_all)
